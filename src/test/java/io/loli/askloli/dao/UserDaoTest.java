@@ -25,7 +25,7 @@ public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
     public void setUp() {
         user = new User();
         user.setUsername("chocotan");
-        user.setPassword("921129");
+        user.setPassword("password");
         user.setEmail("uzumakitenye@gmail.com");
     }
 
