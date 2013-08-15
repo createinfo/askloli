@@ -3,14 +3,39 @@
 
 <head>
 <script type="text/javascript" src="../static/jquery-2.0.3.min.js"></script>
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
+<script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../static/md5.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css">
 
+<script type="text/javascript" src="../static/askloli.js"></script>
 <script type="text/javascript" src="../static/login.js"></script>
 </head>
 
-<body>
+<body class="container">
 
+<div id="login" class="span4 offset3">
+
+<form class="form-horizontal" id="login" onsubmit="login(this);"  method="post">
+  <div class="control-group">
+    <label class="control-label" for="inputUser">用户名</label>
+    <div class="controls">
+      <input type="text" id="inputUser" placeholder="" autofocus="autofocus">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">密码</label>
+    <div class="controls">
+      <input type="password" id="inputPassword" placeholder="">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">登录</button>
+    </div>
+  </div>
+</form>
+
+</div>
 
 </body>
 
