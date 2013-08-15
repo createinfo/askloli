@@ -24,7 +24,7 @@ public class TestG extends JerseyTest {
             .build();
     }
  
-    @Test
+    
     public void searchAPI() throws Exception {
         WebResource webResource = resource();
         MultivaluedMap<String, String> params = new MultivaluedMapImpl();

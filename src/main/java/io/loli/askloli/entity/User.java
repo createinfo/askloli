@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * 用户信息的实体
@@ -13,9 +15,13 @@ import javax.persistence.Id;
  * 
  */
 @Entity
+@NamedQueries(value = {
+        @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.username=:username"),
+        @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email=:email"),
+        @NamedQuery(name = "User.findByNameAndEmail", query = "SELECT u FROM User u WHERE u.username=:username AND u.password=:password") })
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(unique = true, nullable = false)
     private String username;

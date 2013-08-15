@@ -21,7 +21,6 @@
 		<hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
 		<jersey.version>2.2-SNAPSHOT</jersey.version>
 	</properties>
-
 	<repositories>
 		<repository>
 			<id>snapshot-repository.java.net</id>
@@ -282,6 +281,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>

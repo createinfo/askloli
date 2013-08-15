@@ -21,7 +21,7 @@ public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     private User user;
 
-    @Before
+    
     public void setUp() {
         user = new User();
         user.setUsername("chocotan");
@@ -29,7 +29,7 @@ public class UserDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
         user.setEmail("uzumakitenye@gmail.com");
     }
 
-    @Test
+    
     public void testSave() {
         userDao.save(user);
         assertThat(user.getId(), not(0));
