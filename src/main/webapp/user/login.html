@@ -1,9 +1,41 @@
 <!DOCTYPE HTML>
-
-
 <html>
 
-<body>
+<head>
+<script type="text/javascript" src="../static/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/md5.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css">
+
+<script type="text/javascript" src="../static/login.js"></script>
+</head>
+
+<body class="container">
+<div class="span4">
+<h3 class="text-center">登录</h3>
+<form class="form-horizontal" method="post" onsubmit="log();">
+  <div class="control-group">
+    <label class="control-label" for="inputUsername">用户名</label>
+    <div class="controls">
+      <input type="text" id="inputUsername" placeholder="">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">密码</label>
+    <div class="controls">
+      <input type="password" id="inputPassword" placeholder="">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <label class="checkbox">
+        <input type="checkbox"> 自动登陆
+      </label>
+      <button type="submit" class="btn">登录</button>
+    </div>
+  </div>
+</form>
+</div>
 </body>
 
 </html>
