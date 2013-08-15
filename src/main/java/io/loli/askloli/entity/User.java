@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private int id;
     @Column(unique = true, nullable = false)
     private String username;
     @Column(length = 32, nullable = false)
@@ -24,11 +24,11 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
