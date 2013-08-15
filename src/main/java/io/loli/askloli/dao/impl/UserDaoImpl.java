@@ -5,7 +5,6 @@ import io.loli.askloli.entity.User;
 
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Named("userDao")
@@ -17,18 +16,17 @@ public class UserDaoImpl implements UserDao {
         em.persist(user);
     }
 
-    public User findByName(String name) throws NoResultException {
+    public User findByName(String name) {
         return em.createNamedQuery("User.findByName", User.class)
                 .setParameter("username", name).getSingleResult();
     }
 
-    public User findByEmail(String email) throws NoResultException {
+    public User findByEmail(String email) {
         return em.createNamedQuery("User.findByEmail", User.class)
                 .setParameter("email", email).getSingleResult();
     }
 
-    public User findByNameAndPassword(String name, String password)
-            throws NoResultException {
+    public User findByNameAndPassword(String name, String password) {
         return em.createNamedQuery("User.findByNameAndPassword", User.class)
                 .setParameter("username", name)
                 .setParameter("password", password).getSingleResult();

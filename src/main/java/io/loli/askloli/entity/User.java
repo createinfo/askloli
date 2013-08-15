@@ -7,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 /**
  * 用户信息的实体
  * 
@@ -19,6 +21,7 @@ import javax.persistence.NamedQuery;
         @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.username=:username"),
         @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email=:email"),
         @NamedQuery(name = "User.findByNameAndEmail", query = "SELECT u FROM User u WHERE u.username=:username AND u.password=:password") })
+@XmlRootElement
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,6 +33,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
+    @XmlAttribute
     public int getId() {
         return id;
     }
@@ -38,6 +42,7 @@ public class User {
         this.id = id;
     }
 
+    @XmlAttribute
     public String getUsername() {
         return username;
     }
@@ -45,7 +50,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
+    @XmlTransient
     public String getPassword() {
         return password;
     }
@@ -53,7 +58,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    @XmlAttribute
     public String getEmail() {
         return email;
     }
