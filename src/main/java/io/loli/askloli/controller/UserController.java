@@ -5,6 +5,7 @@ import io.loli.askloli.service.UserService;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -17,6 +18,14 @@ public class UserController {
     @Inject
     private UserService us;
 
+    
+    /**
+     * 用户注册
+     * @param username 用户名
+     * @param password 密码
+     * @param email 邮箱
+     * @return 注册后的User对象, 会由rest框架自动转换成json字符串
+     */
     @Path("/regist")
     @Produces(MediaType.APPLICATION_JSON)
     @POST

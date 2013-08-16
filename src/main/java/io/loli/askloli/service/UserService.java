@@ -2,9 +2,6 @@ package io.loli.askloli.service;
 
 import io.loli.askloli.entity.User;
 
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 public interface UserService {
 
     void save(User user);
@@ -14,4 +11,6 @@ public interface UserService {
     boolean isExistByUsername(String username);
 
     boolean isExistByEmail(String email);
+
+    User findById(int id);
 }

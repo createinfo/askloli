@@ -67,4 +67,10 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
+    
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public User findById(int id){
+        return userDao.findById(id);
+    }
 }

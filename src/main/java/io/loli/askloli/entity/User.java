@@ -10,6 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
 /**
  * 用户信息的实体
  * 
@@ -20,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries(value = {
         @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.username=:username"),
         @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email=:email"),
-        @NamedQuery(name = "User.findByNameAndEmail", query = "SELECT u FROM User u WHERE u.username=:username AND u.password=:password") })
+        @NamedQuery(name = "User.findByNameAndPassword", query = "SELECT u FROM User u WHERE u.username=:username AND u.password=:password") })
 @XmlRootElement
 public class User {
     @Id
@@ -50,6 +51,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
     @XmlTransient
     public String getPassword() {
         return password;
@@ -58,6 +60,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
     @XmlAttribute
     public String getEmail() {
         return email;
