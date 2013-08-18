@@ -31,7 +31,7 @@ public class JerseyBaseTest extends JerseyTest {
     protected final static String POST = "POST";
     protected WebResource webResource;
     protected static Map<String, String> paramMap;
-    protected String host = "http://localhost:9998";
+    protected String host = "http://localhost:8080";
     protected static ObjectMapper mapper;
 
     @Override

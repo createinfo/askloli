@@ -123,7 +123,7 @@ public class UserController {
      * @return session中有user对象则返回"logout_success", 否则返回"not_login"
      */
     @GET
-    @Path("logout")
+    @Path("/logout")
     public String logout(@Context HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {

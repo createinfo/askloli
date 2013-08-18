@@ -4,7 +4,7 @@
 	<groupId>io.loli</groupId>
 	<artifactId>askloli</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>askloli</name>
 	<description>一个自定义问卷调查的webapp</description>
 	<properties>
@@ -45,6 +45,13 @@
 				<groupId>commons-logging</groupId> <artifactId>commons-logging</artifactId> 
 				</exclusion> </exclusions> -->
 		</dependency>
+maven连test类都扫描不到了
+这坑爹的
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+刚刚
+
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -93,16 +100,9 @@
 			<artifactId>jersey-json</artifactId>
 			<version>1.17.1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-grizzly2-servlet</artifactId>
-			<version>1.17.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-grizzly2</artifactId>
-			<version>1.17.1</version>
-		</dependency>
+		<!-- <dependency> <groupId>com.sun.jersey</groupId> <artifactId>jersey-grizzly2-servlet</artifactId> 
+			<version>1.17.1</version> </dependency> <dependency> <groupId>com.sun.jersey</groupId> 
+			<artifactId>jersey-grizzly2</artifactId> <version>1.17.1</version> </dependency> -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-servlet</artifactId>
@@ -194,36 +194,21 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- <dependency> <groupId>com.sun.jersey.jersey-test-framework</groupId> 
+			<artifactId>jersey-test-framework-grizzly2</artifactId> <version>1.17.1</version> 
+			<scope>test</scope> </dependency> <dependency> <groupId>org.glassfish.grizzly</groupId> 
+			<artifactId>grizzly-framework</artifactId> <version>2.3.5</version> </dependency> 
+			<dependency> <groupId>org.glassfish.grizzly</groupId> <artifactId>grizzly-http</artifactId> 
+			<version>2.3.5</version> </dependency> <dependency> <groupId>org.glassfish.grizzly</groupId> 
+			<artifactId>grizzly-http-server</artifactId> <version>2.3.5</version> </dependency> 
+			<dependency> <groupId>org.glassfish.grizzly</groupId> <artifactId>grizzly-http-servlet</artifactId> 
+			<version>2.3.5</version> </dependency> <dependency> <groupId>org.glassfish.grizzly</groupId> 
+			<artifactId>grizzly-http-servlet-extras</artifactId> <version>2.3.5</version> 
+			</dependency> -->
 		<dependency>
 			<groupId>com.sun.jersey.jersey-test-framework</groupId>
-			<artifactId>jersey-test-framework-grizzly2</artifactId>
+			<artifactId>jersey-test-framework-core</artifactId>
 			<version>1.17.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.grizzly</groupId>
-			<artifactId>grizzly-framework</artifactId>
-			<version>2.3.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.grizzly</groupId>
-			<artifactId>grizzly-http</artifactId>
-			<version>2.3.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.grizzly</groupId>
-			<artifactId>grizzly-http-server</artifactId>
-			<version>2.3.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.grizzly</groupId>
-			<artifactId>grizzly-http-servlet</artifactId>
-			<version>2.3.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.grizzly</groupId>
-			<artifactId>grizzly-http-servlet-extras</artifactId>
-			<version>2.3.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.jersey.contribs</groupId>
@@ -231,11 +216,35 @@
 			<version>1.17.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>7.0.42</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-logging-juli</artifactId>
+			<version>7.0.42</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jdt.core.compiler</groupId>
+			<artifactId>ecj</artifactId>
+			<version>3.7.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>7.0.42</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>io.loli.askloli</finalName>
 		<plugins>
-			<plugin>
+<!-- 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.1</version>
@@ -251,7 +260,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -297,6 +306,11 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0</version>
 			</plugin>
 		</plugins>
 	</build>
