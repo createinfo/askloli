@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<script type="text/javascript" src="../static/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/md5.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css">
+
+<script type="text/javascript" src="../static/askloli.js"></script>
+<script type="text/javascript" src="../static/regist.js"></script>
+</head>
+
+<body class="container">
+
+<div id="regist" class="span8 offset3">
+
+<form class="form-horizontal" id="regist" onsubmit="regist();"  method="post">
+  <div class="control-group">
+    <label class="control-label" for="inputUser">用户名</label>
+    <div class="controls">
+      <input type="text" id="inputUser" placeholder="" autofocus="autofocus">
+	  <span hidden="hidden" class="">用户名已被占用</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">密码</label>
+    <div class="controls">
+      <input type="password" id="inputPassword" placeholder="">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="repeat">重复密码</label>
+    <div class="controls">
+      <input type="password" id="repeat" placeholder="">
+	  <span hidden="hidden" class="">密码不一致</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">邮箱</label>
+    <div class="controls">
+      <input type="password" id="inputPassword" placeholder="">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">注册</button>
+    </div>
+  </div>
+</form>
+
+
+</div>
+
+</body>
+
+</html>
