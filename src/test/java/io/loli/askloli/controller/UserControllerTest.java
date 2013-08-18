@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import io.loli.askloli.entity.User;
-import io.loli.askloli.test.JerseyBaseTest;
+import io.loli.askloli.test.TomcatBaseTest;
 
 import java.io.IOException;
 import java.util.Date;
@@ -16,7 +16,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.junit.Test;
 
-public class UserControllerTest extends JerseyBaseTest {
+public class UserControllerTest extends TomcatBaseTest {
 
     @Test
     public void testRegist() throws JsonParseException, JsonMappingException,

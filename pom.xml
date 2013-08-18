@@ -45,13 +45,6 @@
 				<groupId>commons-logging</groupId> <artifactId>commons-logging</artifactId> 
 				</exclusion> </exclusions> -->
 		</dependency>
-maven连test类都扫描不到了
-这坑爹的
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
-
-刚刚
-
-		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -240,27 +233,15 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 			<version>7.0.42</version>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>io.loli.askloli</finalName>
 		<plugins>
-<!-- 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<mainClass>io.loli.askloli.start.Start</mainClass>
-				</configuration>
-				<executions>
-					<execution>
-						<id>my-execution</id>
-						<phase>package</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.1</version> <configuration> <mainClass>io.loli.askloli.start.Start</mainClass> 
+				</configuration> <executions> <execution> <id>my-execution</id> <phase>package</phase> 
+				<goals> <goal>java</goal> </goals> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -311,6 +292,46 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.0</version>
+				<configuration>
+					<path>/</path>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-tomcat</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<fork>true</fork>
+						</configuration>
+					</execution>
+					<execution>
+						<id>stop-tomcat</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>shutdown</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<includes>
+						<include>**/*IntegrationTest*</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
