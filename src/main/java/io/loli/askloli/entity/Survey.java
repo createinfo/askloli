@@ -48,11 +48,11 @@ public class Survey {
         this.creator = creator;
     }
 
-    public Question getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Question questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
 
