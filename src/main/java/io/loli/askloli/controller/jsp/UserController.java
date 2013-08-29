@@ -27,6 +27,13 @@ public class UserController {
     @Inject
     private UserService us;
 
+    @Path("/regist")
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public Response registSetup() {
+        return Response.ok(new Viewable("/user/regist", null)).build();
+    }
+
     /**
      * 用户注册
      * 
@@ -38,9 +45,9 @@ public class UserController {
      *            邮箱
      * @return Response
      */
-    @Path("/regist")
+    @Path("/regist/submit")
     @POST
-    public Response regist(@FormParam("username") String username,
+    public Response registSubmit(@FormParam("username") String username,
             @FormParam("password") String password,
             @FormParam("email") String email) {
         User user = new User();
@@ -51,10 +58,13 @@ public class UserController {
         Map<String, Object> map = new HashMap<String, Object>();
         if (user.getId() == 0) {
             map.put("info", "用户名或邮箱已存在");
+            return Response.ok(new Viewable("/user/regist/submit", map))
+                    .build();
         } else {
             map.put("info", "注册成功, 请登陆");
+            return Response.ok(new Viewable("/user/login", map)).build();
         }
-        return Response.ok(new Viewable("/user/login", map)).build();
+
     }
 
     /**
@@ -86,12 +96,11 @@ public class UserController {
      *            post参数-用户名
      * @param password
      *            post参数-密码(最好是md5)
-     * @return 登陆成功: /user/home
-     *         登陆失败: /user/login
+     * @return 登陆成功: /user/home 登陆失败: /user/login
      */
     @POST
-    @Path("/login")
-    public Response login(@Context HttpServletRequest request,
+    @Path("/login/submit")
+    public Response loginSubmit(@Context HttpServletRequest request,
             @FormParam("username") String username,
             @FormParam("password") String password) {
         User result = us.findByUsernameAndPassword(username, password);

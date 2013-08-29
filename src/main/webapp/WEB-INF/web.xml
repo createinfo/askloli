@@ -2,6 +2,9 @@
 	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee/web-app_3_0.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
@@ -15,11 +18,11 @@
 		<listener-class>org.springframework.web.context.request.RequestContextListener
 		</listener-class>
 	</listener>
-	<servlet>
-		<servlet-name>jerseypage</servlet-name>
-		<servlet-class>
+	<filter>
+		<filter-name>jerseypage</filter-name>
+		<filter-class>
 			com.sun.jersey.spi.spring.container.servlet.SpringServlet
-		</servlet-class>
+		</filter-class>
 		<init-param>
 			<param-name>
 				com.sun.jersey.config.property.packages
@@ -31,21 +34,21 @@
 			<param-value>true</param-value>
 		</init-param>
 		<init-param>
+			<param-name>com.sun.jersey.config.property.WebPageContentRegex
+			</param-name>
+			<param-value>/WEB-INF/(static|jsp)/.*</param-value>
+		</init-param>
+		<init-param>
 			<param-name>com.sun.jersey.config.property.JSPTemplatesBasePath
 			</param-name>
 			<param-value>/WEB-INF/jsp</param-value>
 		</init-param>
-		<init-param>
-			<param-name>com.sun.jersey.config.property.WebPageContentRegex
-			</param-name>
-			<param-value>/(static|(WEB-INF/jsp))/.*</param-value>
-		</init-param>
 		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>jerseypage</servlet-name>
+	</filter>
+	<filter-mapping>
+		<filter-name>jerseypage</filter-name>
 		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
+	</filter-mapping>
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter

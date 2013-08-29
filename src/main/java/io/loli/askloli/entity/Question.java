@@ -24,7 +24,7 @@ public class Question {
     @Column(nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "questions")
+    @ManyToOne
     @JoinColumn(name = "survey_id", nullable = false)
     private Survey survey;
 
