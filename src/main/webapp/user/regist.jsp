@@ -1,4 +1,5 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 
 <head>
@@ -19,7 +20,7 @@
     <label class="control-label" for="inputUser">用户名</label>
     <div class="controls">
       <input type="text" id="inputUser" placeholder="" autofocus="autofocus">
-	  <span hidden="hidden" class="">用户名已被占用</span>
+      <span hidden="hidden" class="">用户名已被占用</span>
     </div>
   </div>
   <div class="control-group">
@@ -32,7 +33,7 @@
     <label class="control-label" for="repeat">重复密码</label>
     <div class="controls">
       <input type="password" id="repeat" placeholder="">
-	  <span hidden="hidden" class="">密码不一致</span>
+      <span hidden="hidden" class="">密码不一致</span>
     </div>
   </div>
   <div class="control-group">

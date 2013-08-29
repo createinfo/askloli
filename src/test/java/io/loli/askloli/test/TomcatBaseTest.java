@@ -12,29 +12,40 @@ import javax.ws.rs.core.MultivaluedMap;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.client.apache4.ApacheHttpClient4;
 import com.sun.jersey.client.apache4.config.DefaultApacheHttpClient4Config;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
-public class TomcatBaseTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
+public class TomcatBaseTest extends
+        AbstractTransactionalJUnit4SpringContextTests {
     private static Tomcat mTomcat;
     protected static ApacheHttpClient4 client;
     protected static DefaultApacheHttpClient4Config config;
 
     protected String output;
+    protected ClientResponse response;
     protected final static String GET = "GET";
     protected final static String POST = "POST";
     protected WebResource webResource;
     protected static Map<String, String> paramMap;
-    protected String host = "http://localhost:8080/rest";
+    protected String host = "http://localhost:8080/";
     protected static ObjectMapper mapper;
     protected static String BASE_DIR = System.getProperty("user.dir");
     protected static String webappDirLocation = "src/main/webapp";
+
     @BeforeClass
     public static void beforeClass() throws LifecycleException,
             ServletException {
@@ -68,10 +79,16 @@ public class TomcatBaseTest {
             for (Entry<String, String> entry : paramMap.entrySet()) {
                 queryParams.add(entry.getKey(), entry.getValue());
             }
-            output = webResource
+            response = webResource
                     .type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
-                    .accept(mediaType).post(String.class, queryParams);
+                    .accept(mediaType).post(ClientResponse.class, queryParams);
+            output = response.getEntity(String.class);
+            response.close();
         }
+    }
+
+    @After
+    public void tearUp() {
     }
 
     @AfterClass

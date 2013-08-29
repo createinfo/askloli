@@ -1,4 +1,4 @@
-package io.loli.askloli.controller;
+package io.loli.askloli.controller.api;
 
 import javax.inject.Inject;
 import javax.inject.Named;

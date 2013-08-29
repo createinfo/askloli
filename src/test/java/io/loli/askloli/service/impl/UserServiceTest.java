@@ -44,12 +44,13 @@ public class UserServiceTest extends
 
     @Test
     public void testIsExistByUsername() {
+        boolean result1 = us.isExistByUsername(user.getUsername());
+        assertTrue(!result1);
         us.save(user);
-        boolean result = us.isExistByUsername(user.getUsername());
-        assertTrue(result);
-
-        boolean result2 = us.isExistByUsername("");
-        assertTrue(!result2);
+        boolean result2 = us.isExistByUsername(user.getUsername());
+        assertTrue(result2);
+        boolean result3 = us.isExistByUsername("");
+        assertTrue(!result3);
     }
 
     @Test
@@ -57,7 +58,6 @@ public class UserServiceTest extends
         us.save(user);
         boolean result = us.isExistByEmail(user.getEmail());
         assertTrue(result);
-
         boolean result2 = us.isExistByEmail("");
         assertTrue(!result2);
     }
@@ -76,9 +76,9 @@ public class UserServiceTest extends
     }
 
     @Test
-    public void testFindById(){
+    public void testFindById() {
         us.save(user);
         User result = us.findById(user.getId());
-        assertEquals(user.getId(),result.getId());
+        assertEquals(user.getId(), result.getId());
     }
 }

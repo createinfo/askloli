@@ -16,7 +16,7 @@
 		</listener-class>
 	</listener>
 	<servlet>
-		<servlet-name>jersey-serlvet</servlet-name>
+		<servlet-name>jerseypage</servlet-name>
 		<servlet-class>
 			com.sun.jersey.spi.spring.container.servlet.SpringServlet
 		</servlet-class>
@@ -30,11 +30,21 @@
 			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
 			<param-value>true</param-value>
 		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.JSPTemplatesBasePath
+			</param-name>
+			<param-value>/WEB-INF/jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.WebPageContentRegex
+			</param-name>
+			<param-value>/(static|(WEB-INF/jsp))/.*</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>jersey-serlvet</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
+		<servlet-name>jerseypage</servlet-name>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
