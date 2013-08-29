@@ -4,11 +4,8 @@
 
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="../static/md5.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
-<script type="text/javascript" src="../static/askloli.js"></script>
-<script type="text/javascript" src="../static/login.js"></script>
 </head>
 
 <body class="container">
