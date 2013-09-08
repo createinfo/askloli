@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class QuestionType {
-    enum QType {
+    public static enum QType {
         TEXTAREA("TEXTAREA"), RADIO("REDIO"), CHECKBOX("CHECKBOX"), TEXTFIELD(
                 "TEXTAREA");
         String s;
@@ -28,7 +28,7 @@ public class QuestionType {
     private int id;
     
     @Column(nullable = false)
-    private QType type;
+    private String type;
 
     public int getId() {
         return id;
@@ -38,11 +38,11 @@ public class QuestionType {
         this.id = id;
     }
 
-    public QType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(QType type) {
+    public void setType(String type) {
         this.type = type;
     }
 }

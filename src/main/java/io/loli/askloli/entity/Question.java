@@ -33,7 +33,7 @@ public class Question {
     private QuestionType type;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Option> options;
+    private List<QOption> options;
     public int getId() {
         return id;
     }
@@ -74,11 +74,11 @@ public class Question {
         this.type = type;
     }
 
-    public List<Option> getOptions() {
+    public List<QOption> getOptions() {
         return options;
     }
 
-    public void setOptions(List<Option> options) {
+    public void setOptions(List<QOption> options) {
         this.options = options;
     }
 }

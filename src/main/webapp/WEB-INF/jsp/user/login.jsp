@@ -12,17 +12,17 @@
 
 <div id="login" class="span4 offset3">
 
-<form class="form-horizontal" id="login" onsubmit="login(this);"  method="post">
+<form class="form-horizontal" id="login" action="login/submit"  method="post">
   <div class="control-group">
     <label class="control-label" for="inputUser">用户名</label>
     <div class="controls">
-      <input type="text" id="inputUser" placeholder="" autofocus="autofocus">
+      <input type="text" name="username" id="inputUser" placeholder="用户名" required autofocus="autofocus">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputPassword">密码</label>
     <div class="controls">
-      <input type="password" id="inputPassword" placeholder="">
+      <input type="password" name="password" id="inputPassword" required placeholder="密码">
     </div>
   </div>
   <div class="control-group">
@@ -31,9 +31,7 @@
     </div>
   </div>
 </form>
-
 </div>
-
 </body>
 
 </html>

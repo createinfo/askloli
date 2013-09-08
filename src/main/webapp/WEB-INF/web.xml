@@ -43,7 +43,6 @@
 			</param-name>
 			<param-value>/WEB-INF/jsp</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
 	</filter>
 	<filter-mapping>
 		<filter-name>jerseypage</filter-name>

@@ -6,6 +6,10 @@
 
 	<persistence-unit name="askloli" transaction-type="RESOURCE_LOCAL">
 		<class>io.loli.askloli.entity.User</class>
+		<class>io.loli.askloli.entity.Survey</class>
+		<class>io.loli.askloli.entity.Question</class>
+		<class>io.loli.askloli.entity.QuestionType</class>
+		<class>io.loli.askloli.entity.QOption</class>
 		<properties>
 			<!-- <property name="openjpa.Log" value="SQL=TRACE" /> -->
 			<property name="openjpa.Log"

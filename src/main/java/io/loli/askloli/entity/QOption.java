@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Option {
+public class QOption {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

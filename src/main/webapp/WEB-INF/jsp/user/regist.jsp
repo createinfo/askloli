@@ -12,31 +12,31 @@
 
 <div id="regist" class="span8 offset3">
 
-<form class="form-horizontal" id="regist" onsubmit="regist();"  method="post">
+<form class="form-horizontal" id="regist" action="regist/submit"  method="post">
   <div class="control-group">
     <label class="control-label" for="inputUser">用户名</label>
     <div class="controls">
-      <input type="text" id="inputUser" placeholder="" autofocus="autofocus">
+      <input type="text" name="username" id="inputUser" placeholder="用户名" required autofocus="autofocus">
       <span hidden="hidden" class="">用户名已被占用</span>
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputPassword">密码</label>
     <div class="controls">
-      <input type="password" id="inputPassword" placeholder="">
+      <input name="password" type="password" id="inputPassword" required placeholder="密码">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="repeat">重复密码</label>
     <div class="controls">
-      <input type="password" id="repeat" placeholder="">
+      <input type="password" id="repeat" required placeholder="重复密码">
       <span hidden="hidden" class="">密码不一致</span>
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputPassword">邮箱</label>
     <div class="controls">
-      <input type="password" id="inputPassword" placeholder="">
+      <input name="email" type="email" id="inputPassword" required placeholder="邮箱">
     </div>
   </div>
   <div class="control-group">

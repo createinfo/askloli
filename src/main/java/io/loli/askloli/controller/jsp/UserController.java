@@ -33,6 +33,13 @@ public class UserController {
     public Response registSetup() {
         return Response.ok(new Viewable("/user/regist", null)).build();
     }
+    
+    @Path("/login")
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public Response loginSetup() {
+        return Response.ok(new Viewable("/user/login", null)).build();
+    }
 
     /**
      * 用户注册
@@ -108,9 +115,10 @@ public class UserController {
         if (result != null) {
             request.getSession(true).setAttribute("user", result);
             map.put("info", "登陆成功");
+            return Response.ok(new Viewable("/user/welcome", map)).build();
         } else {
             map.put("info", "用户名或密码错误");
+            return Response.ok(new Viewable("/user/login", map)).build();
         }
-        return Response.ok(new Viewable("/user/login", map)).build();
     }
 }
