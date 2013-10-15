@@ -10,9 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries(value = { @NamedQuery(name = "Question.listBySurveyId", query = "SELECT q FROM Question q WHERE q.survey.id=:s_id") })
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,9 +34,12 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "type", nullable = false)
     private QuestionType type;
+    
+    private QuestionType.QType typeS;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<QOption> options;
+
     public int getId() {
         return id;
     }
@@ -80,5 +86,14 @@ public class Question {
 
     public void setOptions(List<QOption> options) {
         this.options = options;
+    }
+
+    public QuestionType.QType getTypeS() {
+        return typeS;
+    }
+
+    public void setTypeS(QuestionType.QType typeS) {
+        this.typeS = typeS;
+        
     }
 }

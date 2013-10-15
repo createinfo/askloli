@@ -12,7 +12,7 @@
 
 <div id="regist" class="span8 offset3">
 
-<form class="form-horizontal" id="regist" action="regist/submit"  method="post">
+<form class="form-horizontal" id="regist" action="regist"  method="post">
   <div class="control-group">
     <label class="control-label" for="inputUser">用户名</label>
     <div class="controls">

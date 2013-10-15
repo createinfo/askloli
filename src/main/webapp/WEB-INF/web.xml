@@ -19,6 +19,23 @@
 		</listener-class>
 	</listener>
 	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+	   <filter-name>characterEncodingFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
 		<filter-name>jerseypage</filter-name>
 		<filter-class>
 			com.sun.jersey.spi.spring.container.servlet.SpringServlet
@@ -36,7 +53,7 @@
 		<init-param>
 			<param-name>com.sun.jersey.config.property.WebPageContentRegex
 			</param-name>
-			<param-value>/WEB-INF/(static|jsp)/.*</param-value>
+			<param-value>/static/.*</param-value>
 		</init-param>
 		<init-param>
 			<param-name>com.sun.jersey.config.property.JSPTemplatesBasePath
@@ -48,17 +65,24 @@
 		<filter-name>jerseypage</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<filter>
-		<filter-name>characterEncodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
-		</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
+	
+	   <!-- 配置taglib标签库 -->
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/fmt</taglib-uri>
+            <taglib-location>/META-INF/fmt.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/c</taglib-uri>
+            <taglib-location>/META-INF/c.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/functions</taglib-uri>
+            <taglib-location>/META-INF/fn.tld</taglib-location>
+        </taglib>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+        </jsp-property-group>
+    </jsp-config>
 </web-app>

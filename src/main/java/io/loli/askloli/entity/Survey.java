@@ -3,6 +3,7 @@ package io.loli.askloli.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +17,10 @@ public class Survey {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(nullable=false)
     private String title;
-
+    @Column(nullable=false)
+    private String description;
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "creator_id", nullable = false)
     private User creator;
@@ -54,6 +57,14 @@ public class Survey {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

@@ -12,7 +12,7 @@
 
 <div id="login" class="span4 offset3">
 
-<form class="form-horizontal" id="login" action="login/submit"  method="post">
+<form class="form-horizontal" id="login" action="login"  method="post">
   <div class="control-group">
     <label class="control-label" for="inputUser">用户名</label>
     <div class="controls">

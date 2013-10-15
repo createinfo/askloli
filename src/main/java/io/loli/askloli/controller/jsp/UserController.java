@@ -52,7 +52,7 @@ public class UserController {
      *            邮箱
      * @return Response
      */
-    @Path("/regist/submit")
+    @Path("/regist")
     @POST
     public Response registSubmit(@FormParam("username") String username,
             @FormParam("password") String password,
@@ -65,7 +65,7 @@ public class UserController {
         Map<String, Object> map = new HashMap<String, Object>();
         if (user.getId() == 0) {
             map.put("info", "用户名或邮箱已存在");
-            return Response.ok(new Viewable("/user/regist/submit", map))
+            return Response.ok(new Viewable("/user/regist", map))
                     .build();
         } else {
             map.put("info", "注册成功, 请登陆");
@@ -106,7 +106,7 @@ public class UserController {
      * @return 登陆成功: /user/home 登陆失败: /user/login
      */
     @POST
-    @Path("/login/submit")
+    @Path("/login")
     public Response loginSubmit(@Context HttpServletRequest request,
             @FormParam("username") String username,
             @FormParam("password") String password) {

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class QuestionType {
     public static enum QType {
-        TEXTAREA("TEXTAREA"), RADIO("REDIO"), CHECKBOX("CHECKBOX"), TEXTFIELD(
+        TEXTAREA("TEXTAREA"), RADIO("RADIO"), CHECKBOX("CHECKBOX"), TEXTFIELD(
                 "TEXTAREA");
         String s;
 
@@ -45,4 +45,5 @@ public class QuestionType {
     public void setType(String type) {
         this.type = type;
     }
+    
 }
